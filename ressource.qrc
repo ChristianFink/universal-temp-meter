@@ -1,0 +1,12 @@
+<RCC>
+  <qresource prefix="icons">
+    <file alias="save">filesave.png</file>
+    <file>thermometer.svg</file>
+    <file alias="IRTD">IRTD.png</file>
+    <file alias="instrument">instrument.png</file>
+    <file alias="interval">interval.png</file>
+    <file alias="burger">burger.png</file>
+    <file alias="play">play.png</file>
+    <file>pause.png</file>
+  </qresource>
+</RCC>
