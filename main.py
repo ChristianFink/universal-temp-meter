@@ -12,8 +12,6 @@ Copyright (c) 2022 Your Company
 
 import sys
 
-
-
 from PySide6.QtWidgets import QApplication, QMainWindow, QToolButton, QMenu, QDialog
 from PySide6.QtCore import QFile, QObject, Signal, Slot, QTimer, QAbstractTableModel, Qt, QPropertyAnimation, QEasingCurve
 from PySide6.QtGui import QBrush, QColor, QAction, QIcon
@@ -28,7 +26,8 @@ import random
 import time
 
 from dummyDevices import DummyMeter, DummyTempMeter
-from kaye import Kaye
+from kaye_dummy import Kaye
+# from kaye import Kaye
 from definitions import MeasureType
 # import asyncio
 # from pathlib import Path
@@ -414,13 +413,25 @@ class MainWindow(QMainWindow):
 
     @property
     def data(self):
+
+        # Daten in Messgerät speichern
         return self.m.data
 
     @Slot()
     def config_ready(self):
         print("Konfiguration bereit")
-        self.show_hide_big_values(True)
-        self.definition = self.m.channel_def
+        #self.show_hide_big_values(True)
+        
+        # Kanaldefinition
+        # Messgerätvarianten ( eine Instanz Messgerät)
+        #  - Kaye-Sonde (mehrere Sonden)
+        #  - Fluke
+        #    1523 / 1524 (eine / zwei Sonden)
+        #    1504 (eine Sonde)
+        #    1594 (mehrere Kanäle)
+        #  - Almemo
+        #    Mehrere Fühler/Kanäle
+        #self.definition = self.m.channel_def
 
         channels = self.definition.get('channels', 1)
         self.definition['colors'] = [Colors(i) for i in range(channels)]
